@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #identitas{
+        color: blue;
+    }
+
+    .nama{
+        color: black;
+    }
+
+    .body > #identitas > .nama{
+        color: brown;
+    }
+
+    #identitas > .nama{
+        color: darkorchid;
+    }
+
+    #karakter{
+        color:crimson;
+    }
+    h1{
+        color:darkgreen;
+    }
+
+    .daftar{
+        border: darkmagenta 1px;
+    }
+
+</style>
+<body>
+    <h1 class="nama">Identitas</h1>
+    <ul id="identitas" class="daftar">
+        <li class="nama">Nama</li>
+        <li>Umur</li>
+    </ul>
+    <h1>Karakter</h1>
+    <ul id="karakter" class="daftar">
+        <li>Bersemangat</li>
+        <li>Tidak putus asa</li>
+    </ul>
+    <ul id="karakter" >
+        <li>Mudah menyerah</li>
+        <li>Sering galau</li>
+    </ul>
+   
+</body>
+</html>
