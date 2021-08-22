@@ -1,5 +1,5 @@
 body {
-  background-color: white;
+  background-color: #fafafa;
 }
 
 .space {
@@ -101,7 +101,7 @@ li a {
 footer {
   width: 100%;
   text-align: center;
-  margin-top: 5%;
+  margin-top: 8%;
 }
 
 .btn-primary {
@@ -113,6 +113,7 @@ footer {
   background-color: #80c1fd;
   border: none;
 }
+
 #tombol{padding: 7px 154px; }
 
 .tombol_sumbit{padding: 10px 24px;}
