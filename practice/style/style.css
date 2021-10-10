@@ -31,6 +31,15 @@ body {
   padding-bottom: 20px;
 }
 
+.fa {
+  padding: 2px ;
+  font-size: 10px;
+  text-align: right;
+  text-decoration: none;
+  background-color: blue;
+  color: white;
+}
+
 .atau {
   width: 100%;
   text-align: center;
@@ -104,6 +113,10 @@ footer {
   background-color: #80c1fd;
   border: none;
 }
+
+#tombol{padding: 7px 154px; }
+
+.tombol_sumbit{padding: 10px 24px;}
 
 .wraper {
   max-width: 1000px !important;
