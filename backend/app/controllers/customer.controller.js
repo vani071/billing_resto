@@ -8,6 +8,11 @@ exports.create = (req, res) => {
         message: "Content can not be empty!"
       });
     }
+
+    if(!req.body.phone)
+    res.status(400).send({
+     message: "ga da phone nya bro"
+     });
   
     // Create a Customer
     const customer = new Customer({
