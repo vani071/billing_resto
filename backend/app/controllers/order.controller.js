@@ -32,13 +32,14 @@ exports.create = (req, res) => {
   };
   
 
+
 // Retrieve all Orders from the database.
 exports.findAll = (req, res) => {
     Order.getAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while retrieving tables."
+            err.message || "Some error occurred while retrieving orders."
         });
       else res.send(data);
     });
@@ -71,17 +72,17 @@ exports.update = (req, res) => {
     }
   
     Order.updateById(
-      req.params.tableId,
+      req.params.orderId,
       new Order(req.body),
       (err, data) => {
         if (err) {
           if (err.kind === "not_found") {
             res.status(404).send({
-              message: `Not found Order with id ${req.params.tableId}.`
+              message: `Not found Order with id ${req.params.orderId}.`
             });
           } else {
             res.status(500).send({
-              message: "Error updating Order with id " + req.params.tableId
+              message: "Error updating Order with id " + req.params.orderId
             });
           }
         } else res.send(data);
@@ -89,31 +90,33 @@ exports.update = (req, res) => {
     );
   };
 
-// Delete a Order with the specified tableId in the request
+
+// Delete a Order with the specified orderId in the request
 exports.delete = (req, res) => {
-    Order.remove(req.params.tableId, (err, data) => {
+    Order.remove(req.params.orderId, (err, data) => {
       if (err) {
         if (err.kind === "not_found") {
           res.status(404).send({
-            message: `Not found Order with id ${req.params.tableId}.`
+            message: `Not found Order with id ${req.params.orderId}.`
           });
         } else {
           res.status(500).send({
-            message: "Could not delete Order with id " + req.params.tableId
+            message: "Could not delete Order with id " + req.params.orderId
           });
         }
       } else res.send({ message: `Order was deleted successfully!` });
     });
   };
 
-// Delete all Orders from the database.
+
+// Delete all orders from the database.
 exports.deleteAll = (req, res) => {
     Order.removeAll((err, data) => {
       if (err)
         res.status(500).send({
           message:
-            err.message || "Some error occurred while removing all tables."
+            err.message || "Some error occurred while removing all orders."
         });
-      else res.send({ message: `All Orders were deleted successfully!` });
+      else res.send({ message: `All orders were deleted successfully!` });
     });
   };

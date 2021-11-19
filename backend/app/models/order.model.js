@@ -1,6 +1,7 @@
 const sql = require("./db.js");
 
 // constructor
+
 const Order = function(order) {
     this.customer_id = order.customer_id;
     this.table_id = order.table_id;
@@ -32,12 +33,12 @@ Order.findById = (tableId, result) => {
         }
 
         if (res.length) {
-        console.log("found table: ", res[0]);
+        console.log("found order: ", res[0]);
         result(null, res[0]);
         return;
         }
 
-        // not found Order with the id
+        // not found order with the id
         result({ kind: "not_found" }, null);
     });
 };
@@ -67,13 +68,13 @@ Order.updateById = (id, table, result) => {
         }
 
         if (res.affectedRows == 0) {
-            // not found Order with the id
+            // not found order with the id
             result({ kind: "not_found" }, null);
             return;
         }
 
-        console.log("updated table: ", { id: id, ...table });
-        result(null, { id: id, ...table });
+        console.log("updated order: ", { id: id, ...order });
+        result(null, { id: id, ...order });
         }
     );
 };
@@ -87,12 +88,12 @@ Order.remove = (id, result) => {
         }
 
         if (res.affectedRows == 0) {
-        // not found Order with the id
+        // not found order with the id
         result({ kind: "not_found" }, null);
         return;
         }
 
-        console.log("deleted table with id: ", id);
+        console.log("deleted order with id: ", id);
         result(null, res);
     });
 };
@@ -104,7 +105,7 @@ Order.removeAll = result => {
         result(null, err);
         return;
       }
-  
+ 
       console.log(`deleted ${res.affectedRows} orders`);
       result(null, res);
     });
