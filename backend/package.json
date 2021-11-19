@@ -1,18 +1,17 @@
 {
   "name": "billing-resto",
   "version": "1.0.0",
-  "description": "application for billing and provide the API using express",
+  "description": "application for billing and provide the API using Express",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
-    "nodejs",
     "express",
-    "mysql",
-    "restapi"
+    "nodejs",
+    "mysql"
   ],
-  "author": "Kelas-online",
+  "author": "kelas-online",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
