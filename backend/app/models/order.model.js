@@ -1,31 +1,31 @@
 const sql = require("./db.js");
 
 // constructor
-const order = function(order) {
+
+const Order = function(order) {
     this.customer_id = order.customer_id;
-    this.booking_time = order.booking_time;
-    this.table_id = order.table_id,
+    this.table_id = order.table_id;
     this.grandtotal = order.grandtotal;
     this.status = order.status;
     this.user_id = order.user_id;
-
+    this.booking_time = order.booking_time;
 };
   
-order.create = (neworder, result) => {
-    sql.query("INSERT INTO orders SET ?", neworder, (err, res) => {
+Order.create = (newOrder, result) => {
+    sql.query("INSERT INTO orders SET ?", newOrder, (err, res) => {
         if (err) {
         console.log("error: ", err);
         result(err, null);
         return;
         }
 
-        console.log("created customer: ", { id: res.insertId, ...neworder });
-        result(null, { id: res.insertId, ...neworder });
+        console.log("created orders: ", { id: res.insertId, ...newOrder });
+        result(null, { id: res.insertId, ...newOrder });
     });
 };
 
-order.findById = (orderId, result) => {
-    sql.query(`SELECT * FROM orders WHERE id = ${orderId}`, (err, res) => {
+Order.findById = (tableId, result) => {
+    sql.query(`SELECT * FROM orders WHERE id = ${tableId}`, (err, res) => {
         if (err) {
         console.log("error: ", err);
         result(err, null);
@@ -43,7 +43,7 @@ order.findById = (orderId, result) => {
     });
 };
 
-order.getAll = result => {
+Order.getAll = result => {
     sql.query("SELECT * FROM orders", (err, res) => {
         if (err) {
         console.log("error: ", err);
@@ -56,10 +56,10 @@ order.getAll = result => {
     });
 };
 
-order.updateById = (id, order, result) => {
+Order.updateById = (id, table, result) => {
     sql.query(
-        "UPDATE orders SET total_chairs = ? WHERE id = ?",
-        [order.total_chairs, id],
+        "UPDATE orders SET status = ? WHERE id = ?",
+        [table.status, id],
         (err, res) => {
         if (err) {
             console.log("error: ", err);
@@ -79,7 +79,7 @@ order.updateById = (id, order, result) => {
     );
 };
 
-order.remove = (id, result) => {
+Order.remove = (id, result) => {
     sql.query("DELETE FROM orders WHERE id = ?", id, (err, res) => {
         if (err) {
         console.log("error: ", err);
@@ -98,17 +98,17 @@ order.remove = (id, result) => {
     });
 };
 
-order.removeAll = result => {
+Order.removeAll = result => {
     sql.query("DELETE FROM orders", (err, res) => {
       if (err) {
         console.log("error: ", err);
         result(null, err);
         return;
       }
-  
-      console.log(`deleted ${res.affectedRows} customers`);
+ 
+      console.log(`deleted ${res.affectedRows} orders`);
       result(null, res);
     });
   };
   
-  module.exports = order;
+  module.exports = Order;
